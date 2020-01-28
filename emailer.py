@@ -48,9 +48,9 @@ def _getemails(allusers):
   emails = []
   for i in range(len(allusers)):
     person = allusers[i]
-    
+
     name = person.name
-    
+
     # MESSAGE HERE
     body = "Hi {}, ".format(name)
 
@@ -80,7 +80,7 @@ Hacktech Team
     msg['Subject'] = subj
     msg.attach(MIMEText(body))
     print("Sending msg to emails "+str(email)+" at company " + person.school)
-    
+
     ### Here is an example of attaching something
     '''
      for f in ["SponsorshipPackage2020.pdf"]:
@@ -94,7 +94,7 @@ Hacktech Team
     emails.append((email, msg))
   return emails
 
-def _initialparse(infile):
+def _initialparse(df):
     allusers = []
     # The specific names
     contact1 = df['Name'].values
@@ -107,8 +107,8 @@ def _initialparse(infile):
 
 if __name__ == '__main__':
     df = pd.read_csv('dump.csv', comment='#', encoding="ISO-8859-1")
-    allusers = _initialparse('parse_out.txt')
+    allusers = _initialparse(df)
     allemails = _getemails(allusers)
     for email in allemails:
         _sendemail(email)
-        time.sleep(5)
+        time.sleep(3)

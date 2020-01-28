@@ -22,7 +22,7 @@ class User():
         self.name = None if pd.isnull(name) else name
         # Your fields here!!
         self.email = email
-        self.schoo = school
+        self.school = school
         self.club = club
 
 def LOG(obj):
@@ -72,7 +72,7 @@ Hacktech Team
     body = body.encode('ascii', 'ignore').decode('ascii')
     subj = 'Apply to Hacktech 2020!'
 
-    email = [person.email1]
+    email = [person.email]
 
     msg = MIMEMultipart()
     msg['From'] = sender
